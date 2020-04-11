@@ -1,2 +1,2 @@
 # mlcourse_ai_rus
-mlcourse_ai_rus
+practice, homeworks, colab notebooks, python.
