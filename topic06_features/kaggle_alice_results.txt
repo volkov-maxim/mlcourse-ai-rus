@@ -1,0 +1,85 @@
+# best results: 
+# no optimized hyperopt: CV mean: 0.9006746371972261, CV std: 0.06583856829266388|0.95359
+# with optimized hyperopt: CV mean: 0.9069137228246346, CV std: 0.06509986267194472|0.95455
+
+# 8_1_3: CV mean: 0.8940667514543665, CV std: 0.11090870017939243
+
+# 8_2_16-1: CV mean: 0.8761899144494854, CV std: 0.12411958056932715
+# + night + OHE weekdays: CV mean: 0.8757129453197317, CV std: 0.11250240502685123
+# + OHE seasons: CV mean: 0.868536248368969, CV std: 0.11683254035198372
+# drop features with importance <=0: CV mean: 0.8897942919441968, CV std: 0.09437866567285036
+# back all features and drop categorical without OHE:CV mean: 0.8931259210811886, CV std: 0.08723713485530508
+# drop 'night','summer' as useless (coef=0): CV mean: 0.8931229996178329, CV std: 0.08724802650747966
+# 8_2_17: fixed data without filter (all data): CV mean: 0.8887240646739917, CV std: 0.08970716038760769
+# no fix, no filter:CV mean: 0.9031661282011818, CV std: 0.07237454532129968
+# no fix + filter:     CV mean: 0.917889877459961, CV std: 0.05787521759663636
+# 8_2_18 + year_month: CV mean: 0.9178881440433528, CV std: 0.057879546501196595
+# + month: CV mean: 0.9176480761683645, CV std: 0.0580120853895715
+# drop new features (added after holiday): CV mean: 0.8992862691908335, CV std: 0.0960570311454679
+-># correct filter for date: CV mean: 0.9009218894421952, CV std: 0.0660092485644545
+# + OHE 'monday': CV mean: 0.892900765218149, CV std: 0.07466348044780176|0.94627
+
+-># 8_2_19: drop OHE 'monday' (back to 8_2_11): CV mean: 0.9009218894421952, CV std: 0.0660092485644545|0.95351
+
+# 8_2_20: logit 'liblinear': CV mean: 0.9003986993406958, CV std: 0.06679061012817658
+# logit penalty='l1': CV mean: 0.902091931189843, CV std: 0.06925840680367858|0.94968
+# logit solver='sag', max_iter=10000: CV mean: 0.9002697020452869, CV std: 0.06696425013335626
+# logit solver='saga': CV mean: 0.9002353068592079, CV std: 0.06697496651543944
+-># logit solver='newton-cg': CV mean: 0.9009302284175013, CV std: 0.06596839450013904|0.95351
+# 8_2_21: logit 'liblinear', penalty='l1': CV mean: 0.902091931189843, CV std: 0.06925840680367858|0.94968
+-># 8_2_22: logit 'lbfgs': CV mean: 0.9009218894421952, CV std: 0.0660092485644545
+# + all weekdays: CV mean: 0.9019943181186354, CV std: 0.06986921044951659
+# + mon,wed,sun only: CV mean: 0.9121774876559146, CV std: 0.05600052256576388|0.94883
+# 8_2_23: + fix data: CV mean: 0.8716785000766029, CV std: 0.12630773069997497
+# + no date filter: CV mean: 0.895584853442638, CV std: 0.10646022373861258
+# + no fix: CV mean: 0.9051480094383045, CV std: 0.06860281382745294|0.94759
+# 8_2_24: + fix data + date filter + 'online_day': CV mean: 0.8713005641867362, CV std: 0.1289952544549234
+# + no date filter: CV mean: 0.8913404967027759, CV std: 0.1126015278469414
+# + date filter + no fix: CV mean: 0.9044247568014272, CV std: 0.10233882809451587
+# + drop 'online_day': CV mean: 0.9028385302624946, CV std: 0.10736400395968798
+# + change date filter (2013-02-11): CV mean: 0.9121774876559146, CV std: 0.05600052256576388
+# + all weekdays: CV mean: 0.9019943181186354, CV std: 0.06986921044951659|0.94874
+# 8_2_25: + change date filter (2013-11-14): CV mean: 0.9087279725955979, CV std: 0.06771358850046824
+# + drop 'day': CV mean: 0.9074616823189994, CV std: 0.06963394314080464
+# + return 'day' + drop 'work_hours': CV mean: 0.9085099511682634, CV std: 0.06789752869449714
+# + drop 'day_of_week':               CV mean: 0.9082599296746914, CV std: 0.06839047930517524
+--># + return 'day_of_week' + drop 'month': CV mean: 0.9155585136586062, CV std: 0.05693018209856973|0.95538
+# 8_2_26: drop 'year_month':                CV mean: 0.9155607029682677, CV std: 0.05692634931590593
+# + drop 'day_of_week':                     CV mean: 0.9164046138445681, CV std: 0.05630330095070841
+# + drop 'holiday':                         CV mean: 0.9169342030183005, CV std: 0.05608204702921499|0.95516
+# 8_2_27: return 'holiday':                 CV mean: 0.9164046138445681, CV std: 0.05630330095070841|0.95526
+-># 8_2_28: return 'day_of_week':           CV mean: 0.9155607029682677, CV std: 0.05692634931590593|0.95538
+# 8_2_29: + 'online_day':                   CV mean: 0.9144132045544552, CV std: 0.05689598654511142|0.95537
+# 8_2_30: drop 'online_day' + seasons:      CV mean: 0.9169132382204666, CV std: 0.058629224166646336
+# + drop 'summer':                          CV mean: 0.9169310405488428, CV std: 0.058616204117618864|0.95083
+# 8_2_31: drop seasons + OHE months:        CV mean: 0.9195195106815091, CV std: 0.055040209126982605|0.95376
+# 8_2_32: drop may,june,july,august,september,october: CV mean: 0.9195195106815091, CV std: 0.055040209126982605
+# + return all months + drop only summer:   CV mean: 0.9195195106815091, CV std: 0.055040209126982605   
+--># + drop all month + duration features(sec):CV mean: 0.915476629124487,  CV std: 0.05681517926492692|0.95541
+# 8_2_33: + drop duration(sec):                CV mean: 0.9143402193145753, CV std: 0.0570678402104597
+# + duration features(min):                    CV mean: 0.9157496787825922, CV std: 0.0569362988991695|0.95538
+# 8_2_34: return duration(sec) + change duration filter (<43 - percentile 75): CV mean: 0.9155772169074549, CV std: 0.057154022064383095
+# + change duration filter (<12 - percentile 50):CV mean: 0.9154402614943408, CV std: 0.0575164970113192
+# + change duration filter (<49 - percentile 77.77):CV mean: 0.9156458990985235, CV std: 0.057039289033394835
+# + change duration filter (<107 - percentile 88.88):CV mean: 0.9159364273049111, CV std: 0.05696317476119519
+# + change duration filter (<118 - percentile 90):   CV mean: 0.9160053913620299, CV std: 0.05687552828616176
+# + change duration filter (<240 - percentile 95):   CV mean: 0.9155324914184428, CV std: 0.05683507181848192|0.95535
+# 8_2_35: + change duration filter (<118 - percentile 90):CV mean: 0.9160053913620299, CV std: 0.05687552828616176|0.95519
+# 8_2_36: + drop OHE duration features:CV mean: 0.9155667418030561, CV std: 0.05692118969729869
+-># return OHE duration features + filter(<0.8): CV mean: 0.915476629124487, CV std: 0.05681517926492692
+--># duration filter (<2.0 percentile 10):      CV mean: 0.9156042433833402, CV std: 0.05689473009092138|0.95543
+
+# 8_2_37: duration filter (<3.0 percentile 15): CV mean: 0.9156518453994694, CV std: 0.05670467439807647|0.95520
+# 8_2_38:vectorizer_params={'ngram_range': (1, 4):CV mean: 0.9156948857488804, CV std: 0.056596622507900554
+# + duration filter (<2.0 percentile 10):      CV mean: 0.9156256547766901, CV std: 0.056766677506146515|0.95531
+# 8_2_39: 'ngram_range':(1,5):                 CV mean: 0.9156042433833402, CV std: 0.05689473009092138
+# 8_2_40: optimize hyperparam {C:16.23776739188721}:CV mean: 0.9223619735578492, CV std: 0.05182974905926543|0.95413
+
+
+
+#8_4_2 CV mean: 0.8811944543514352, CV std: 0.09791290131239867|0.95121
+?# + OHE weekdays + night CV mean: 0.8937150204071681, CV std: 0.053394313846085506
+# + OHE seasons CV mean: 0.8842876603701562, CV std: 0.07178524884711732
+# drop features with importance <=0: CV mean: 0.8777686167873421, CV std: 0.08455685764466049
+# 8_4_3: back all features and drop categorical without OHE: CV mean: 0.9044603543706421, CV std: 0.04683359515472891|0.94737
+#8_4_4: fixed and filtred data + OHE weekdays:CV mean: 0.893461992675485, CV std: 0.05380734411984679|0.95146
