@@ -1,0 +1,179 @@
+subm_1: catboost starter GPU (new feature flight)
+valid=?, LB=0.72516
+
+--> subm_2: catboost starter CPU (new feature flight=Origin_Dest)
+valid = 0.7697143106015093, LB=0.73807
+
+--> subm_3: subm_2 + StratifiedKFold
+valid = 0.7697143106015093, LB=0.73807
+
+subm_4: subm_2 + 2x interaction
+valid = 0.7665297570448019, LB=0.73383
+
+subm_2 + season
+valid = 0.7670584138935275
+
+subm_4 + season
+valid = 0.7671671117148885
+
+subm_2 - flight + month_period
+valid = 0.7666904686691575
+
+subm_2 + month_period
+valid = 0.7674917060974945
+
+subm_2 + season + month_period
+valid = 0.766925730768527
+
+subm_2 + workday
+valid = 0.7681206356413929
+
+subm_2 + weekend
+valid = 0.7681206356413929
+
+subm_2 + daytime
+valid = 0.7687735793174207
+
+subm_2 + distance_categories
+valid = 0.7687520516425498
+
+subm_2 - flight
+valid = 0.7663636977355603
+
+subm_2 - flight + 2x interaction
+valid = 0.7655932563416138
+
+subm_2 - flight + scaling
+valid = 0.7663636977355603
+
+--> subm_2 + scaling
+valid = 0.7697143106015093
+
+subm_2 + all new features
+valid = 0.7692845138519487
+
+subm_2 + all new features + 2x interaction
+valid = 0.769222107378327
+
+subm_2 + all new features + 2x interaction - flight
+valid = 0.7676054849402094
+
+subm_2 + all new features + 2x interaction - flight + scaling
+valid = 0.7676054849402094
+
+subm_2 + all new features + 2x interaction - flight + scaling - DepTime
+valid = 0.7654549660753176
+
+subm_2 - flight - Deptime - Distance
+valid = 0.6655201732367384
+
+subm_5: subm_2 - flight + DepTime_Origin
+valid = 0.7777267353347364, LB = 0.73630
+
+sumb_6: subm_5 + flight (Origin_Dest)
+valid = 0.7761791210944395, LB = 0.73649
+
+subm_7: sumb_2 - flight (Origin_Dest) + class_weights[1, 4.250997689561016]
+valid = 0.7653451079072361, LB = 0.73605
+
+subm_8: subm_7 + Origin_Dest
+valid = 0.7668237499853245, LB = 0.73512
+
+subm_9: subm_8 + Origin_Dest - DepTime
+valid = 0.6627356654279617, LB = 0.60876
+
+subm_10: subm_7 - DepTime + DepHour
+valid = 0.7612751737671465, LB = 0.73115
+
+subm_7 + Month_DayofMonth
+valid = 0.7659813815089497
+
+subm_11: subm_7 + Month_DayofMonth + DepTime_Origin
+valid = 0.7723618902901401, LB = 0.72794
+
+subm_7 + Month_DayofMonth + DepTime_Origin + DepTime_UniqueCarrier
+valid = 0.7762427239503944
+
+subm_7 - class_weights + auto_class_weights='Balanced'
+valid = 0.7652889139731986
+
+subm_7 - class_weights + auto_class_weights='SqrtBalanced'
+valid = 0.7664299095698558
+
+--> subm_12: sumb_2 + process 'c-' features + Origin_Dest 	Season 	Month_period 	Workday 	Weekend 	Daytime 	Dep_hour 	Distance_categories
+valid = 0.7568477375231719, LB = 0.73997
+
+subm_13: subm_12 + DepTime_Origin 	DepTime_Distance 	DepTime_UniqueCarrier 	DepTime_Origin_Dest 	Month_DayofMonth
+valid = 0.774466730412704, LB = 0.73166
+
+subm_14: subm_13 + UniqueCarrier_Dest + DepTime_Dest
+valid = 0.7748389710820769, LB = 0.73117
+
+subm_15: subm_14 + Month_Dest Month_Origin Month_UniqueCarrier Month_DayOfWeek 	Month_DepTime 	DayofMonth_Dest 	UniqueCarrier_Origin 	UniqueCarrier_Origin_Dest 	UniqueCarrier_Daytime 	Dest_Daytime 	Dest_Distance 	DayOfWeek_Dest 	DayofMonth_Origin
+valid = 0.7800015194055628, LB = 0.73690
+
+subm_16: subm_15 + hour_2 hour_3 hour_4 minute winter spring summer autumn
+valid = 0.7879981245049293, LB = 0.73813
+
+subm_16 - DepTime - Distance
+valid = 0.7869528034592976
+
+sumb_2 + season, month_period, workday, weekend, daytime, Dep_hour, distance_bin, Dep_hour_2, Dep_hour_3, Dep_hour_4, Dep_minute, winter, spring, summer, autumn, Dep_hour_bin, UniqueCarrier_Origin, UniqueCarrier_Dest - DepTime, Distance + CatBoostClassifier(iterations=3000, loss_function='Logloss', l2_leaf_reg=0.8, od_type='Iter')
+valid = 0.7763084457003608
+
+sumb_2 + season, month_period, workday, weekend, daytime, Dep_hour, distance_bin, Dep_hour_2, Dep_hour_3, Dep_hour_4, Dep_minute, winter, spring, summer, autumn, Dep_hour_bin, UniqueCarrier_Origin, UniqueCarrier_Dest - DepTime, Distance + CatBoostClassifier(iterations=3000, loss_function='Logloss', l2_leaf_reg=0.8, od_type='Iter') + train_test_split(..., test_size=0.2,random_state=1)
+valid = 0.7768917109606195
+
+--> subm_17: sumb_2 + weekend, daytime, Dep_hour, Dep_hour_bin, distance_bin, Dep_hour_2, Dep_hour_4, Dep_minute, UniqueCarrier_Dest, UniqueCarrier_Origin, winter, spring, summer, autumn - DepTime - Distance + train_test_split(..., test_size=0.2, random_state=1) + CatBoostClassifier(iterations=3000, loss_function='Logloss', l2_leaf_reg=0.8, od_type='Iter') + extra cat features (Dep_hour_2, Dep_hour_4)
+valid = 0.8223961100048669, LB = 0.76240
+
+subm_18: subm_17 + extra cat features (Month, DayofMonth, DayOfWeek, Dep_hour, Dep_minute)
+valid = 0.8011476865355927, LB = 0.74786
+
+subm_17 + extra cat features (Dep_hour, Dep_minute)
+valid = 0.7903894050773435
+
+--> subm_19: subm_17 + extra cat feature (Dep_hour)
+valid = 0.8203784290040302, LB = 0.76522
+
+subm_20: subm_19 + Dep_hour_3
+valid = 0.8231312279259192, LB = 0.76517
+
+subm_21: subm_19 + extra cat feature (Dep_hour_3)
+valid = 0.8266491644585959, LB = 0.76246
+
+subm_22: subm_21 + Dep_minute_2
+valid = 0.8225516093469518, LB = 0.76228
+
+sumb_23: subm_22 - Dep_hour_3
+valid = 0.8248850438062155, LB = 0.76377
+
+subm_19 + extra cat feature (Dep_minute_2)
+valid = 0.8225667848633964
+
+--> subm_24: subm_19 + UniqueCarrier_Origin_Dest
+valid = 0.8300062007557806, LB = 0.76528
+
+--> subm_25: subm_24 + Origin_Dest_Dep_minute
+valid = 0.8291074490182171, LB = 0.76610
+
+subm_26: subm_25 + Origin_Dest_Dep_hour
+valid = 0.8276485119776574, LB = 0.76303
+
+subm_27: subm_25 + Origin_Dest_Dep_hour + Dest_UniqueCarrier_Origin
+valid = 0.8295914585301511, LB = 0.76315
+
+--> subm_28: subm_25 + Dest_UniqueCarrier_Origin
+valid = 0.8301733965111951, LB = 0.76750
+
+
+-------------------------------------------------
+ideas for experiments:
+- feature interaction
+- split stratify  by y
+- split stratify by Dep_hour/Dep_hour_2/Dep_hour_4
+- class_weights
+- catboost OHE
+- catboost hyperparameters optimization
+- SVM
+- Logistic Regression

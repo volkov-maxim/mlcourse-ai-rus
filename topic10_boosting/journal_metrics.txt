@@ -1,0 +1,120 @@
+subm_2 + class_weights=[1, 1]
+valid: 0.7697143106015093, LB=0.73807
+
+Predicted 	0 	1 	All
+Validation 			
+0 	    23936 	351 	24287
+1 	     4749 	964 	5713
+All 	  28685 	1315 	30000
+
+Accuracy: 0.83
+Precision: 0.73
+Recall: 0.17
+F1 score: 0.27
+
+subm_2 + class_weights[1, 4.250997689561016]
+valid: 0.7668237499853245, LB = 0.73512
+
+Predicted 	0 	1 	All
+Validation 			
+0   	  17419 	6868 	 24287
+1 	     1890 	3823 	 5713
+All 	  19309 	10691  30000
+
+Accuracy: 0.71
+Precision: 0.36
+Recall: 0.67
+F1 score: 0.47
+
+
+subm_7 - class_weights + auto_class_weights='Balanced'
+valid = 0.7652889139731986
+
+Predicted 	0 	1 	All
+Validation 			
+0 	    17273 	7014 	 24287
+1 	    1864 	  3849 	 5713
+All 	  19137 	10863  30000
+
+Accuracy: 0.70
+Precision: 0.35
+Recall: 0.67
+F1 score: 0.46
+
+subm_15
+Predicted 	0 	1 	All
+Validation 			
+0 	  23709 	578 	24287
+1 	   4434 	1279 	5713
+All 	28143 	1857 	30000
+
+Accuracy: 0.83
+Precision: 0.69
+Recall: 0.22
+F1 score: 0.34
+
+
+subm_17:
+Predicted 	0 	1 	All
+Validation 			
+0 	    15447 	849 	16296
+1 	     2403 	1301 	3704
+All 	  17850 	2150 	20000
+
+Accuracy: 0.84
+Precision: 0.61
+Recall: 0.35
+F1 score: 0.44
+
+
+subm_19:
+Predicted 	0 	1 	All
+Validation 			
+0 	  15465 	831 	16296
+1 	   2428 	1276 	3704
+All 	17893 	2107 	20000
+
+Accuracy: 0.8370
+Precision: 0.6056
+Recall: 0.3445
+F1 score: 0.4392
+
+
+subm_24:
+Predicted 	0 	1 	All
+Validation 			
+0 	  15481 	815 	16296
+1 	   2390 	1314 	3704
+All 	17871 	2129 	20000
+
+Accuracy: 0.8397
+Precision: 0.6172
+Recall: 0.3548
+F1 score: 0.4505
+
+
+subm_25:
+Predicted 	0 	1 	All
+Validation 			
+0 	  15479 	817 	16296
+1 	   2387 	1317 	3704
+All 	17866 	2134 	20000
+
+Accuracy: 0.8398
+Precision: 0.6172
+Recall: 0.3556
+F1 score: 0.4512
+
+subm_28:
+Predicted 	0 	1 	All
+Validation 			
+0 	  15557 	739 	16296
+1 	   2417 	1287 	3704
+All 	17974 	2026 	20000
+
+Accuracy: 0.8422
+Precision: 0.6352
+Recall: 0.3475
+F1 score: 0.4492
+
+
